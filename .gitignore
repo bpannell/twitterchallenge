@@ -2,3 +2,6 @@
 TwitterChallenge/bin/*
 TwitterChallenge/obj/*
 TwitterChallenge/wwwroot/*
+Tests/bin/
+Tests/obj/
+packages/

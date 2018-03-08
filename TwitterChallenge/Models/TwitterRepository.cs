@@ -25,7 +25,7 @@ namespace ILoveTwitter.Models
         public void GetLastTenTweets()
         {
             string TwitterAuthUrl = "https://api.twitter.com/oauth2/token";
-            string TwitterApiUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=salesforce&count=10";
+            string TwitterApiUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=salesforce&count=10&tweet_mode=extended";
             string consumerKey = "3Ci5bsfcPBDGpskKNHA6gbRdH";
             string consumerKeySecret = "mG4JBbhY3Tj2uhvF7WxPVbjGued3dDjPIp7VMQRLkmslW0ufsU";
 
@@ -85,7 +85,12 @@ namespace ILoveTwitter.Models
 
         public IEnumerable<TwitterApi> GetTweets (string search)
         {
-            return _tweets.Where(o => o.text.Contains(search));
+            if (_tweets == null || _tweets.Count == 0)
+            {
+                return _tweets;
+            }
+
+            return _tweets.Where(o => o.textToShow().Contains(search));
         }
 
     }

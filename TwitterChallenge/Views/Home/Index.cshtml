@@ -5,20 +5,26 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search Existing Tweets" />
     </p>
 }
 
 @foreach (var tweet in Model.Tweets)
 {
     <div class="col-lg-1">
-        <div class="thumbnail">
-            <img src="@tweet.user.profile_image_url" alt="" />
-            <div class="caption">
-                <h2>@tweet.user.name</h2>
-                <h3>@tweet.user.screen_name</h3>
-                <p>@tweet.text</p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    <img src="@tweet.user.profile_image_url" alt="" />
+                @tweet.user.name</h3>
+                <h4>@tweet.user.screen_name</h4>
+            </div>
+            <div class="panel-body">
+                <p>@tweet.textToShow()</p>
+            </div>
+            <div class="panel-footer">
+                <footer>Retweets: @tweet.retweet_count</footer>
             </div>
         </div>
     </div>

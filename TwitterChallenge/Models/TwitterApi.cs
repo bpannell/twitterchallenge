@@ -17,7 +17,7 @@ namespace ILoveTwitter.Models
         public string showDateTime()
         {
             DateTimeOffset dateTime = DateTimeOffset.ParseExact(created_at, "ddd MMM dd HH:mm:ss zzz yyyy", CultureInfo.InvariantCulture);
-            return dateTime.ToString("MM/dd/yyyy hh:mm tt");
+            return dateTime.ToLocalTime().ToString("MM/dd/yyyy hh:mm tt");
         }
 
         public string textToShow()

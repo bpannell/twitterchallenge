@@ -5,3 +5,4 @@ TwitterChallenge/wwwroot/*
 Tests/bin/
 Tests/obj/
 packages/
+*.user

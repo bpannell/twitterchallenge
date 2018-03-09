@@ -90,7 +90,12 @@ namespace ILoveTwitter.Models
                 return _tweets;
             }
 
-            return _tweets.Where(o => o.textToShow().Contains(search));
+            if (search != null)
+                return _tweets.Where(o => o.textToShow().Contains(search));
+
+            GetLastTenTweets();
+            return _tweets;
+
         }
 
     }
